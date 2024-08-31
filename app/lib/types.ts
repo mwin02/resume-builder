@@ -18,7 +18,7 @@ export interface ContactDetails {
 export interface HTMLToPDFObject {
   filename: string;
   htmlContent: string;
-  cssContent: string;
+  cssContent: any;
 }
 
 export function isHTMLToPDFObject(obj: any): obj is HTMLToPDFObject {
