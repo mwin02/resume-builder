@@ -2,14 +2,27 @@
 import { isHTMLToPDFObject } from "@/app/lib/types";
 import { NextRequest } from "next/server";
 
-import puppeteer from "puppeteer";
 import { HTMLToPDFObject } from "@/app/lib/types";
+
+const chromium = require("@sparticuz/chromium-min");
+const puppeteer = require("puppeteer-core");
+
+// chromium.setHeadlessMode = true;
+// chromium.setGraphicsMode = false;
 
 const generatePDF = async (pdfInfo: HTMLToPDFObject) => {
   const htmlContent = pdfInfo.htmlContent;
   const cssContent = pdfInfo.cssContent;
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(
+      `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
+    ),
+    headless: chromium.headless,
+    ignoreHTTPSErrors: true,
+  });
   const page = await browser.newPage();
   await page.setContent(htmlContent);
   await page.addStyleTag(cssContent);
