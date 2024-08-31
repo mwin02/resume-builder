@@ -5,7 +5,7 @@ import { NextRequest } from "next/server";
 import puppeteer from "puppeteer";
 import { HTMLToPDFObject } from "@/app/lib/types";
 
-export const generatePDF = async (pdfInfo: HTMLToPDFObject) => {
+const generatePDF = async (pdfInfo: HTMLToPDFObject) => {
   const htmlContent = pdfInfo.htmlContent;
   const cssContent = pdfInfo.cssContent;
 
