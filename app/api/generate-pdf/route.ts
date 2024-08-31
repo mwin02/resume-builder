@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 
 import { HTMLToPDFObject } from "@/app/lib/types";
 
-const chromium = require("@sparticuz/chromium-min");
+const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer-core");
 
 // chromium.setHeadlessMode = true;
@@ -17,9 +17,7 @@ const generatePDF = async (pdfInfo: HTMLToPDFObject) => {
   const browser = await puppeteer.launch({
     args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
-    ),
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless,
     ignoreHTTPSErrors: true,
   });
