@@ -31,3 +31,11 @@ body {
     text-wrap: balance;
   }
 } */
+
+.resume {
+  margin: 50px;
+  margin-top: 200px;
+  font-size: 20px;
+  color: black;
+  background: white;
+}

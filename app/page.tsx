@@ -40,6 +40,8 @@ const sampleExperience: ExperienceSection = {
 };
 
 export default function Home() {
+  // TODO:: Create a Custom Provider and move state information to the provider
+  // Provider will also give access to resume_util functions that modify the resume
   const [personalInfo, setPersonalInfo] = useState<PersonalDetails>(sampleInfo);
   const [contactDetails, setContactDetails] =
     useState<ContactDetails>(sampleContact);
@@ -66,8 +68,7 @@ export default function Home() {
 
   return (
     <main>
-      {resumeHTML}
-
+      <div id="content-id">{resumeHTML}</div>
       <button onClick={() => downloadPDF(pdfInfo)}>Download Resume</button>
     </main>
   );

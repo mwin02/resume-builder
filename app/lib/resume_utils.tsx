@@ -16,7 +16,7 @@ export const convertResumeToJSX = (resume: Resume) => {
     );
   });
   return (
-    <div>
+    <div className="resume">
       <h2>{personalInfo?.name || "Placeholder"}</h2>
       <p>
         <span>{`${personalInfo?.location}   |`}</span>
