@@ -10,13 +10,15 @@ import {
   CustomSection,
   EmptyPersonalDetails,
   EmptyContactDetails,
+  Resume,
 } from "@/app/lib/types";
 
-import { downloadPDF } from "@/app/lib/pdf_utils";
 import { convertResumeToJSX } from "@/app/lib/resume_utils";
 import { useState } from "react";
 
-const ReactDOMServer = require("react-dom/server");
+import { downloadPDF } from "@/app/lib/pdf_utils";
+import ResumeDisplay from "./components/viewer/ResumeDisplay";
+import ResumeBuilder from "./components/builder/ResumeBuilder";
 
 const sampleInfo: PersonalDetails = {
   name: "Myo Zaw Win",
@@ -50,26 +52,19 @@ export default function Home() {
   const [customSections, setCustomSections] = useState<CustomSection[]>([]);
   const [allSections, setAllSections] = useState<Section[]>([]);
 
-  const resumeHTML = convertResumeToJSX({
+  const combinedResume: Resume = {
     personalInfo,
     contactDetails,
     experience,
     education,
     customSections,
     allSections,
-  });
-  const resumeString = ReactDOMServer.renderToString(resumeHTML);
-
-  const pdfInfo: HTMLToPDFObject = {
-    filename: "new_resume.pdf",
-    htmlContent: resumeString,
-    cssContent: { content: "body {padding: 40px}" },
   };
 
   return (
     <main>
-      <div id="content-id">{resumeHTML}</div>
-      <button onClick={() => downloadPDF(pdfInfo)}>Download Resume</button>
+      <ResumeDisplay resume={combinedResume} />
+      <ResumeBuilder />
     </main>
   );
 }
