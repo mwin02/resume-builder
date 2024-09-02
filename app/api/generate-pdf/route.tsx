@@ -1,5 +1,5 @@
 import { generatePDF } from "@/app/api/helper/generate";
-import { isHTMLToPDFObject } from "@/app/lib/types";
+import { isHTMLToPDFObject } from "@/app/lib/types/util";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {

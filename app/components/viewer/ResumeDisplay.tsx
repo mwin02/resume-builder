@@ -1,6 +1,7 @@
-import { downloadPDF } from "@/app/lib/pdf_utils";
-import { convertResumeToJSX } from "@/app/lib/resume_utils";
-import { HTMLToPDFObject, Resume } from "@/app/lib/types";
+import { downloadPDF } from "@/app/lib/util/pdf";
+import { convertResumeToJSX } from "@/app/lib/util/resume";
+import { Resume } from "@/app/lib/types/resume";
+import { HTMLToPDFObject } from "@/app/lib/types/util";
 import ReactDOMServer from "react-dom/server";
 
 export default function ResumeDisplay({ resume }: { resume: Resume }) {

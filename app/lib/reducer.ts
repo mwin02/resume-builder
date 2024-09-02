@@ -1,34 +1,15 @@
+"use client";
+
+import { useReducer } from "react";
 import {
   ContactDetails,
   ExperienceSection,
   PersonalDetails,
   Resume,
-} from "@/app/lib/types";
-import { Dispatch, SetStateAction } from "react";
+} from "@/app/lib/types/resume";
+import { ResumeAction } from "./types/util";
 
-export const convertResumeToJSX = (resume: Resume) => {
-  const { personalInfo, contactDetails, experience } = resume;
-  const experiences = experience.map((exp) => {
-    return (
-      <div key={exp.id}>
-        <p>{exp.jobTitle}</p>
-      </div>
-    );
-  });
-  return (
-    <div className="resume">
-      <h2>{personalInfo?.name || "Placeholder"}</h2>
-      <p>
-        <span>{`${personalInfo?.location}   |`}</span>
-        <span>{`${contactDetails?.email}   |`}</span>
-        <span>{`${contactDetails?.phone}   |`}</span>
-        <span>{`${contactDetails?.website}   |`}</span>
-      </p>
-      <p>{personalInfo?.bio}</p>
-      {experiences}
-    </div>
-  );
-};
+import { Dispatch, SetStateAction } from "react";
 
 const createObjectCopy = (obj: any) => {
   return { ...obj };
@@ -81,4 +62,11 @@ export const toggleDisplay = (
     }
     return createObjectCopy(resume);
   });
+};
+
+export const reducer = (state: Resume, action: ResumeAction): Resume => {
+  const { type, payload } = action;
+  switch (type) {
+  }
+  return state;
 };

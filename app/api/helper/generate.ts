@@ -1,4 +1,4 @@
-import { HTMLToPDFObject } from "@/app/lib/types";
+import { HTMLToPDFObject } from "@/app/lib/types/util";
 import puppeteer from "puppeteer";
 export const generatePDF = async (pdfInfo: HTMLToPDFObject) => {
   const htmlContent = pdfInfo.htmlContent;

@@ -1,4 +1,5 @@
-import { HTMLToPDFObject, Resume } from "./types";
+import { HTMLToPDFObject } from "@/app/lib/types/util";
+import { Resume } from "@/app/lib/types/resume";
 
 export const downloadPDF = (pdfInfo: HTMLToPDFObject) => {
   fetch("/api/generate-pdf", {

@@ -3,7 +3,6 @@ import Image from "next/image";
 import {
   ContactDetails,
   ExperienceSection,
-  HTMLToPDFObject,
   PersonalDetails,
   EducationSection,
   Section,
@@ -11,12 +10,12 @@ import {
   EmptyPersonalDetails,
   EmptyContactDetails,
   Resume,
-} from "@/app/lib/types";
+} from "@/app/lib/types/resume";
 
-import { convertResumeToJSX } from "@/app/lib/resume_utils";
+import { convertResumeToJSX } from "@/app/lib/util/resume";
 import { useState } from "react";
 
-import { downloadPDF } from "@/app/lib/pdf_utils";
+import { downloadPDF } from "@/app/lib/util/pdf";
 import ResumeDisplay from "./components/viewer/ResumeDisplay";
 import ResumeBuilder from "./components/builder/ResumeBuilder";
 
