@@ -18,35 +18,32 @@ export const reducer = (resume: Resume, action: ResumeAction): Resume => {
     }
     case ResumeActionKind.AddExperience: {
       const newExperience = { ...payload };
-      const updatedAllSections = [...resume.allSections, newExperience];
-      const updatedExperience = [...resume.experience, newExperience];
+      const updatedSections = [...resume.sections, newExperience];
       return {
         ...resume,
-        allSections: updatedAllSections,
-        experience: updatedExperience,
+        sections: updatedSections,
       };
     }
     case ResumeActionKind.AddEducation: {
       const newEducation = { ...payload };
-      const updatedAllSections = [...resume.allSections, newEducation];
-      const udatedEducation = [...resume.experience, newEducation];
+      const updatedSections = [...resume.sections, newEducation];
       return {
         ...resume,
-        allSections: updatedAllSections,
-        education: udatedEducation,
+        sections: updatedSections,
       };
     }
     case ResumeActionKind.Toggle: {
-      const updatedResume = { ...resume };
-      const section = updatedResume.allSections.find(
+      const sectionIndex = resume.sections.findIndex(
         (section) => section.id === payload
       );
-      if (section) {
-        section.display = !section.display;
+      if (sectionIndex === -1) {
+        return resume;
       }
-      console.log(updatedResume.experience[0].display);
-
-      return { ...updatedResume };
+      const updatedSection = { ...resume.sections[sectionIndex] };
+      updatedSection.display = !updatedSection.display;
+      const updatedSections = [...resume.sections];
+      updatedSections[sectionIndex] = updatedSection;
+      return { ...resume, sections: updatedSections };
     }
   }
   return resume;

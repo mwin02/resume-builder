@@ -17,10 +17,7 @@ const emptyResume: Resume = {
     phone: null,
     website: null,
   },
-  experience: [],
-  education: [],
-  customSections: [],
-  allSections: [],
+  sections: [],
 };
 
 export function Providers({ children }: any) {

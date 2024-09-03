@@ -10,6 +10,7 @@ import {
   EmptyPersonalDetails,
   EmptyContactDetails,
   Resume,
+  SectionType,
 } from "@/app/lib/types/resume";
 import { ResumeActionKind } from "@/app/lib/types/util";
 
@@ -32,6 +33,7 @@ const sampleExperience: ExperienceSection = {
   location: "",
   id: 0,
   display: true,
+  type: SectionType.Experience,
 };
 
 export default function ResumeBuilder() {

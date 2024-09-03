@@ -1,26 +1,44 @@
 import {
   ContactDetails,
+  CustomSection,
+  EducationSection,
   ExperienceSection,
   PersonalDetails,
   Resume,
+  SectionType,
+  Section,
 } from "@/app/lib/types/resume";
 import { Dispatch, SetStateAction } from "react";
 
+export const getResumeSection = (
+  resume: Resume,
+  type: SectionType
+): Section[] => {
+  const targetSections = resume.sections.filter(
+    (section) => section.type === type
+  );
+  return targetSections;
+};
+
 export const convertResumeToJSX = (resume: Resume) => {
-  const { personalInfo, contactDetails, experience } = resume;
-  const experiences = experience.map((exp) => {
+  const { personalInfo, contactDetails } = resume;
+  const experienceSections = getResumeSection(
+    resume,
+    SectionType.Experience
+  ) as ExperienceSection[];
+  const experiencesContent = experienceSections.map((experience) => {
     let content = <></>;
-    if (exp.display) {
+    if (experience.display) {
       content = (
         <>
           <p>
-            {exp.jobTitle} at {exp.company}
+            {experience.jobTitle} at {experience.company}
           </p>
-          {exp.jobDuty}
+          {experience.jobDuty}
         </>
       );
     }
-    return <div key={exp.id}>{content}</div>;
+    return <div key={experience.id}>{content}</div>;
   });
   return (
     <div className="resume">
@@ -32,7 +50,7 @@ export const convertResumeToJSX = (resume: Resume) => {
         <span>{`${contactDetails?.website}   |`}</span>
       </p>
       <p>{personalInfo?.bio}</p>
-      {experiences}
+      {experiencesContent}
     </div>
   );
 };

@@ -1,10 +1,7 @@
 export interface Resume {
   personalInfo: PersonalDetails;
   contactDetails: ContactDetails;
-  experience: ExperienceSection[];
-  education: EducationSection[];
-  customSections: CustomSection[];
-  allSections: Section[];
+  sections: Section[];
 }
 
 export interface PersonalDetails {
@@ -31,9 +28,16 @@ export const EmptyContactDetails: ContactDetails = {
   website: null,
 };
 
+export enum SectionType {
+  Education = "EDUCATION",
+  Experience = "EXPERIENCE",
+  Custom = "CUSTOM",
+}
+
 export interface Section {
   id: number;
   display: boolean;
+  type: SectionType;
 }
 
 export interface EducationSection extends Section {
