@@ -9,11 +9,18 @@ import { Dispatch, SetStateAction } from "react";
 export const convertResumeToJSX = (resume: Resume) => {
   const { personalInfo, contactDetails, experience } = resume;
   const experiences = experience.map((exp) => {
-    return (
-      <div key={exp.id}>
-        <p>{exp.jobTitle}</p>
-      </div>
-    );
+    let content = <></>;
+    if (exp.display) {
+      content = (
+        <>
+          <p>
+            {exp.jobTitle} at {exp.company}
+          </p>
+          {exp.jobDuty}
+        </>
+      );
+    }
+    return <div key={exp.id}>{content}</div>;
   });
   return (
     <div className="resume">

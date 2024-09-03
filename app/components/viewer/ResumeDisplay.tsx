@@ -1,10 +1,11 @@
 import { downloadPDF } from "@/app/lib/util/pdf";
 import { convertResumeToJSX } from "@/app/lib/util/resume";
-import { Resume } from "@/app/lib/types/resume";
 import { HTMLToPDFObject } from "@/app/lib/types/util";
 import ReactDOMServer from "react-dom/server";
+import { useResumeContext } from "@/app/lib/context";
 
-export default function ResumeDisplay({ resume }: { resume: Resume }) {
+export default function ResumeDisplay() {
+  const { resume } = useResumeContext();
   const resumeHTML = convertResumeToJSX(resume);
   const resumeString = ReactDOMServer.renderToStaticMarkup(resumeHTML);
 
@@ -21,8 +22,6 @@ export default function ResumeDisplay({ resume }: { resume: Resume }) {
 }`,
     },
   };
-
-  console.log(resumeString);
 
   return (
     <div>

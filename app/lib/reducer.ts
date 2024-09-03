@@ -1,72 +1,53 @@
-"use client";
-
-import { useReducer } from "react";
-import {
-  ContactDetails,
-  ExperienceSection,
-  PersonalDetails,
-  Resume,
-} from "@/app/lib/types/resume";
-import { ResumeAction } from "./types/util";
-
-import { Dispatch, SetStateAction } from "react";
+import { Resume } from "@/app/lib/types/resume";
+import { ResumeAction, ResumeActionKind } from "./types/util";
 
 const createObjectCopy = (obj: any) => {
   return { ...obj };
 };
 
-export const setResumePersonalInfo = (
-  newInfo: PersonalDetails,
-  setResume: Dispatch<SetStateAction<Resume>>
-) => {
-  setResume((resume) => {
-    resume.personalInfo = { ...resume.personalInfo, ...newInfo };
-    return createObjectCopy(resume);
-  });
-};
-
-export const setResumeContactDetails = (
-  newInfo: ContactDetails,
-  setResume: Dispatch<SetStateAction<Resume>>
-) => {
-  setResume((resume) => {
-    resume.contactDetails = { ...resume.contactDetails, ...newInfo };
-    return createObjectCopy(resume);
-  });
-};
-
-export const addResumeExperience = (
-  newInfo: ExperienceSection,
-  setResume: Dispatch<SetStateAction<Resume>>
-) => {
-  setResume((resume) => {
-    const newExperience = { ...newInfo };
-    resume.allSections.push(newExperience);
-    resume.experience.push(newExperience);
-    return createObjectCopy(resume);
-  });
-};
-
-export const toggleDisplay = (
-  sectionId: number,
-  setResume: Dispatch<SetStateAction<Resume>>
-) => {
-  setResume((resume) => {
-    console.log(`toggling section ${sectionId}`);
-    const section = resume.allSections.find(
-      (section) => section.id === sectionId
-    );
-    if (section) {
-      section.display = !section.display;
-      console.log("succeeded");
-    }
-    return createObjectCopy(resume);
-  });
-};
-
-export const reducer = (state: Resume, action: ResumeAction): Resume => {
+export const reducer = (resume: Resume, action: ResumeAction): Resume => {
   const { type, payload } = action;
   switch (type) {
+    case ResumeActionKind.SetInfo: {
+      const newPersonalInfp = { ...resume.personalInfo, ...payload };
+      return { ...resume, personalInfo: newPersonalInfp };
+    }
+    case ResumeActionKind.SetContact: {
+      const newContactDetails = { ...resume.contactDetails, ...payload };
+      return { ...resume, contactDetails: newContactDetails };
+    }
+    case ResumeActionKind.AddExperience: {
+      const newExperience = { ...payload };
+      const updatedAllSections = [...resume.allSections, newExperience];
+      const updatedExperience = [...resume.experience, newExperience];
+      return {
+        ...resume,
+        allSections: updatedAllSections,
+        experience: updatedExperience,
+      };
+    }
+    case ResumeActionKind.AddEducation: {
+      const newEducation = { ...payload };
+      const updatedAllSections = [...resume.allSections, newEducation];
+      const udatedEducation = [...resume.experience, newEducation];
+      return {
+        ...resume,
+        allSections: updatedAllSections,
+        education: udatedEducation,
+      };
+    }
+    case ResumeActionKind.Toggle: {
+      const updatedResume = { ...resume };
+      const section = updatedResume.allSections.find(
+        (section) => section.id === payload
+      );
+      if (section) {
+        section.display = !section.display;
+      }
+      console.log(updatedResume.experience[0].display);
+
+      return { ...updatedResume };
+    }
   }
-  return state;
+  return resume;
 };

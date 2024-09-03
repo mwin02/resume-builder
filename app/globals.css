@@ -32,6 +32,11 @@ body {
   }
 } */
 
+main {
+  display: flex;
+  gap: 50px;
+}
+
 .resume {
   font-family: initial;
   font-size: 12px;

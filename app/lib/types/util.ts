@@ -1,13 +1,20 @@
+import { Dispatch } from "react";
 import { Resume } from "./resume";
 
 export interface ResumeContextValue {
   resume: Resume;
 }
 
-export interface ResumeDispatchContextValue {}
+export interface ResumeDispatchContextValue {
+  dispatch: Dispatch<ResumeAction>;
+}
 
 export enum ResumeActionKind {
-  SetPersonalInfo = "SetPersonalInfo",
+  SetInfo = "SETINFO",
+  SetContact = "SETCONTACT",
+  AddExperience = "ADDEXPEREINCE",
+  AddEducation = "ADDEDUCATION",
+  Toggle = "TOGGLE",
 }
 
 export interface ResumeAction {
