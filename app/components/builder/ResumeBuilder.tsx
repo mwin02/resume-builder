@@ -1,18 +1,17 @@
-import { useResumeDispatchContext } from "@/app/lib/context";
+import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
 
 import {
   ContactDetails,
+  EmptyContactDetails,
   ExperienceSection,
   PersonalDetails,
-  EducationSection,
-  Section,
-  CustomSection,
-  EmptyPersonalDetails,
-  EmptyContactDetails,
-  Resume,
   SectionType,
 } from "@/app/lib/types/resume";
 import { ResumeActionKind } from "@/app/lib/types/util";
+
+import ContactInput from "./ContactInput";
+import InfoInput from "./InfoInput";
+import ExperienceBuilder from "./ExperienceBuilder";
 
 const sampleInfo: PersonalDetails = {
   name: "Myo Zaw Win",
@@ -37,6 +36,7 @@ const sampleExperience: ExperienceSection = {
 };
 
 export default function ResumeBuilder() {
+  const { resume } = useResumeContext();
   const { dispatch } = useResumeDispatchContext();
   const setInfo = (info: PersonalDetails) => {
     dispatch({ type: ResumeActionKind.SetInfo, payload: info });
@@ -54,8 +54,9 @@ export default function ResumeBuilder() {
   return (
     <div>
       <h3>Builder</h3>
-      <button onClick={() => setInfo(sampleInfo)}>Set Info</button>
-      <button onClick={() => setContact(sampleContact)}>Set Contact</button>
+      <InfoInput setInfo={setInfo} />
+      <ContactInput setContact={setContact} />
+      <ExperienceBuilder />
       <button onClick={() => addExperience(sampleExperience)}>
         Add Experience
       </button>

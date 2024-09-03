@@ -17,15 +17,15 @@ export const EmptyPersonalDetails: PersonalDetails = {
 };
 
 export interface ContactDetails {
-  email: string | null;
-  phone: string | null;
-  website: string | null;
+  email: string;
+  phone: string;
+  website: string;
 }
 
 export const EmptyContactDetails: ContactDetails = {
-  email: null,
-  phone: null,
-  website: null,
+  email: "",
+  phone: "",
+  website: "",
 };
 
 export enum SectionType {

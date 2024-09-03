@@ -1,5 +1,11 @@
-import { Dispatch } from "react";
-import { Resume } from "./resume";
+import { Dispatch, SetStateAction } from "react";
+import { ContactDetails, Resume } from "./resume";
+
+export interface InputProp {
+  label: string;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+}
 
 export interface ResumeContextValue {
   resume: Resume;
@@ -10,6 +16,7 @@ export interface ResumeDispatchContextValue {
 }
 
 export enum ResumeActionKind {
+  InitialSet = "INITIALSET",
   SetInfo = "SETINFO",
   SetContact = "SETCONTACT",
   AddExperience = "ADDEXPEREINCE",
