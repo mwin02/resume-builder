@@ -12,6 +12,8 @@ import { ResumeActionKind } from "@/app/lib/types/util";
 import ContactInput from "./ContactInput";
 import InfoInput from "./InfoInput";
 import ExperienceBuilder from "./ExperienceBuilder";
+import ExperienceInput from "./ExperienceInput";
+import { useRef } from "react";
 
 const sampleInfo: PersonalDetails = {
   name: "Myo Zaw Win",
@@ -26,7 +28,7 @@ const sampleContact: ContactDetails = {
 const sampleExperience: ExperienceSection = {
   jobTitle: "Full Stack Engineer",
   company: "UCSD",
-  jobDuty: ["full stack", "software development", "create new products"],
+  jobDuty: `["full stack", "software development", "create new products"],`,
   startDate: new Date(),
   endDate: new Date(),
   location: "",
@@ -47,9 +49,6 @@ export default function ResumeBuilder() {
   const addExperience = (info: ExperienceSection) => {
     dispatch({ type: ResumeActionKind.AddExperience, payload: info });
   };
-  const toggleSection = (id: number) => {
-    dispatch({ type: ResumeActionKind.Toggle, payload: id });
-  };
 
   return (
     <div>
@@ -57,10 +56,7 @@ export default function ResumeBuilder() {
       <InfoInput setInfo={setInfo} />
       <ContactInput setContact={setContact} />
       <ExperienceBuilder />
-      <button onClick={() => addExperience(sampleExperience)}>
-        Add Experience
-      </button>
-      <button onClick={() => toggleSection(0)}>Toggle Display</button>
+      <ExperienceInput addExperience={addExperience} />
     </div>
   );
 }

@@ -2,6 +2,7 @@ export interface Resume {
   personalInfo: PersonalDetails;
   contactDetails: ContactDetails;
   sections: Section[];
+  lastSectionId: number;
 }
 
 export interface PersonalDetails {
@@ -43,9 +44,9 @@ export interface Section {
 export interface EducationSection extends Section {
   schoolTitle: string;
   completed: boolean;
-  startDate: string;
-  endDate: string | null;
-  major: string;
+  startDate: string | null;
+  endDate: Date | null;
+  major: Date;
   degree: string;
   gpa: number;
 }
@@ -53,9 +54,9 @@ export interface EducationSection extends Section {
 export interface ExperienceSection extends Section {
   jobTitle: string;
   company: string;
-  jobDuty: string[];
-  startDate: Date;
-  endDate: Date;
+  jobDuty: string;
+  startDate: Date | null;
+  endDate: Date | null;
   location: string;
 }
 

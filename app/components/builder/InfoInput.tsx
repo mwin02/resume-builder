@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { MultiLineInput, SingleLineInput } from "./Input";
 import { PersonalDetails } from "@/app/lib/types/resume";
-import { useResumeContext } from "@/app/lib/context";
+import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
+import { ResumeActionKind } from "@/app/lib/types/util";
 
-export default function InfoInput({
-  setInfo,
-}: {
-  setInfo: (info: PersonalDetails) => void;
-}) {
+export default function InfoInput() {
   const { resume } = useResumeContext();
+  const { dispatch } = useResumeDispatchContext();
   const [name, setName] = useState(resume.personalInfo.name);
   const [bio, setBio] = useState(resume.personalInfo.bio);
   const [location, setLocation] = useState(resume.personalInfo.location);
+  const setInfo = (info: PersonalDetails) => {
+    dispatch({ type: ResumeActionKind.SetInfo, payload: info });
+  };
   useEffect(() => {
     setName(resume.personalInfo.name);
     setBio(resume.personalInfo.bio);

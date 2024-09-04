@@ -49,22 +49,24 @@ function resumeToggle(payload: any, resume: Resume) {
 }
 
 function resumeAddEducation(payload: any, resume: Resume) {
-  const newEducation = { ...payload };
+  const newEducation = { ...payload, id: resume.lastSectionId };
   const updatedSections = [...resume.sections, newEducation];
   // TODO:: Generate unique id for new education
   return {
     ...resume,
     sections: updatedSections,
+    lastSectionId: resume.lastSectionId + 1,
   };
 }
 
 function resumeAddExperience(payload: any, resume: Resume) {
-  const newExperience = { ...payload };
+  const newExperience = { ...payload, id: resume.lastSectionId };
   const updatedSections = [...resume.sections, newExperience];
   // TODO:: Generate unique id for new education
   return {
     ...resume,
     sections: updatedSections,
+    lastSectionId: resume.lastSectionId + 1,
   };
 }
 

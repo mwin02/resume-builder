@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import { SingleLineInput } from "./Input";
 import { ContactDetails } from "@/app/lib/types/resume";
-import { useResumeContext } from "@/app/lib/context";
+import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
+import { ResumeActionKind } from "@/app/lib/types/util";
 
-export default function ContactInput({
-  setContact,
-}: {
-  setContact: (info: ContactDetails) => void;
-}) {
+export default function ContactInput() {
   const { resume } = useResumeContext();
+  const { dispatch } = useResumeDispatchContext();
   const [phone, setPhone] = useState(resume.contactDetails.phone);
   const [email, setEmail] = useState(resume.contactDetails.email);
   const [website, setWebsite] = useState(resume.contactDetails.website);
+
   useEffect(() => {
     setPhone(resume.contactDetails.phone);
     setEmail(resume.contactDetails.email);
     setWebsite(resume.contactDetails.website);
   }, [resume]);
+
+  const setContact = (info: ContactDetails) => {
+    dispatch({ type: ResumeActionKind.SetContact, payload: info });
+  };
   return (
     <div>
       <h3>Contact</h3>
