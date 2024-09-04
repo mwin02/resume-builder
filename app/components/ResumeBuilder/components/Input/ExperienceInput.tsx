@@ -85,11 +85,11 @@ export default function ExperienceInput({
         onCancel={closeModal}
       >
         <h3>Experience</h3>
+        <button onClick={closeModal}>X</button>
         <InputForm inputs={InputFormBuildInfo} />
         <div>
           <MultiLineInput label="" value={newDuty} setValue={setNewDuty} />
           <button onClick={() => addJobDuty(newDuty)}>Add</button>
-
           <SortableList
             items={jobDuty}
             onChange={setJobDuty}

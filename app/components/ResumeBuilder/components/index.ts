@@ -1,2 +1,6 @@
 export { ContactInput, InfoInput } from "./Input";
-export { ExperienceBuilder, EducationBuilder } from "./SectionBuilder";
+export {
+  ExperienceBuilder,
+  EducationBuilder,
+  CustomSectionBuilder,
+} from "./SectionBuilder";

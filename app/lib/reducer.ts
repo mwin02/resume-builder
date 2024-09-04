@@ -1,4 +1,10 @@
-import { ResumeAction, ResumeActionKind, Resume } from "@/app/lib/types";
+import {
+  ResumeAction,
+  ResumeActionKind,
+  Resume,
+  SectionType,
+} from "@/app/lib/types";
+import { getResumeSection } from "./util";
 
 export const reducer = (
   resume: Resume | undefined,
@@ -21,17 +27,42 @@ export const reducer = (
       return resumeSetContact(resume, payload);
     }
     case ResumeActionKind.AddExperience: {
-      return resumeAddExperience(payload, resume);
+      return resumeAdd(payload, resume);
     }
     case ResumeActionKind.AddEducation: {
-      return resumeAddEducation(payload, resume);
+      return resumeAdd(payload, resume);
+    }
+    case ResumeActionKind.AddCustom: {
+      return resumeAdd(payload, resume);
     }
     case ResumeActionKind.Toggle: {
       return resumeToggle(payload, resume);
     }
+    case ResumeActionKind.SetExperience: {
+      return setSection(payload, resume, SectionType.Experience);
+    }
+    case ResumeActionKind.SetEducation: {
+      return setSection(payload, resume, SectionType.Education);
+    }
+    case ResumeActionKind.SetCustom: {
+      return setSection(payload, resume, SectionType.Custom);
+    }
   }
   return resume;
 };
+
+function setSection(payload: any, resume: Resume, type: SectionType) {
+  const oldSections = [...resume.sections];
+  const sectionIds = getResumeSection(resume, type).map(
+    (section) => section.sectionId
+  );
+  const otherSections = oldSections.filter(
+    (section) => !sectionIds.includes(section.sectionId)
+  );
+  const updatedSections = [...otherSections, ...payload];
+  console.log(updatedSections);
+  return { ...resume, sections: updatedSections };
+}
 
 function resumeToggle(payload: any, resume: Resume) {
   const sectionIndex = resume.sections.findIndex(
@@ -47,29 +78,13 @@ function resumeToggle(payload: any, resume: Resume) {
   return { ...resume, sections: updatedSections };
 }
 
-function resumeAddEducation(payload: any, resume: Resume) {
+function resumeAdd(payload: any, resume: Resume) {
   const newEducation = {
     ...payload,
     sectionId: resume.lastSectionId,
     id: resume.lastSectionId,
   };
   const updatedSections = [...resume.sections, newEducation];
-  // TODO:: Generate unique id for new education
-  return {
-    ...resume,
-    sections: updatedSections,
-    lastSectionId: resume.lastSectionId + 1,
-  };
-}
-
-function resumeAddExperience(payload: any, resume: Resume) {
-  const newExperience = {
-    ...payload,
-    sectionId: resume.lastSectionId,
-    id: resume.lastSectionId,
-  };
-  const updatedSections = [...resume.sections, newExperience];
-  // TODO:: Generate unique id for new education
   return {
     ...resume,
     sections: updatedSections,

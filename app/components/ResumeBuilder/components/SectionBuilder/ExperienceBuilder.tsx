@@ -7,6 +7,7 @@ import {
 import { getResumeSection } from "@/app/lib/util";
 import { ExperienceBlock } from "./Block";
 import { ExperienceInput } from "../Input";
+import { SortableList } from "@/app/components/SortableList";
 // TODO:: create a section builder for all sections
 
 export default function ExperienceBuilder() {
@@ -18,22 +19,27 @@ export default function ExperienceBuilder() {
   const addExperience = (info: ExperienceSection) => {
     dispatch({ type: ResumeActionKind.AddExperience, payload: info });
   };
+  const setExperience = (experiences: ExperienceSection[]) => {
+    dispatch({ type: ResumeActionKind.SetExperience, payload: experiences });
+  };
+
   const experiences = getResumeSection(
     resume,
     SectionType.Experience
   ) as ExperienceSection[];
-  const ExperienceBlocks = experiences.map((experience) => (
-    <ExperienceBlock
-      experience={experience}
-      key={experience.id}
-      toggle={toggleSection}
-    />
-  ));
+
   return (
     <div>
       <h3>Experiences</h3>
       <ExperienceInput addExperience={addExperience} />
-      {ExperienceBlocks}
+      <SortableList
+        items={experiences}
+        onChange={setExperience}
+        itemContent={(experience) => {
+          return <>{`${experience.jobTitle} at ${experience.company}`}</>;
+        }}
+        itemClassName="SortableItem"
+      />
     </div>
   );
 }

@@ -69,7 +69,7 @@ export default function EducationInput({
     display: true,
     id: -1,
     sectionId: -1,
-    type: SectionType.Experience,
+    type: SectionType.Education,
     completed: false,
     degree,
   };
@@ -92,7 +92,7 @@ export default function EducationInput({
         ref={ref as MutableRefObject<HTMLDialogElement>}
         onCancel={closeModal}
       >
-        <h3>Experience</h3>
+        <h3>Education</h3>
         <button onClick={closeModal}>X</button>
         <InputForm inputs={InputFormBuildInfo} />
         <div>

@@ -55,7 +55,6 @@ h2 {
   border: 1px solid black;
 }
 
-div {
-  border: 1px black solid;
-  margin-bottom: 10px;
+dialog {
+  max-width: 1000px;
 }

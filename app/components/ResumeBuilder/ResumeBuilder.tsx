@@ -3,6 +3,7 @@ import {
   InfoInput,
   ExperienceBuilder,
   EducationBuilder,
+  CustomSectionBuilder,
 } from "./components";
 
 export function ResumeBuilder() {
@@ -13,6 +14,7 @@ export function ResumeBuilder() {
       <ContactInput />
       <ExperienceBuilder />
       <EducationBuilder />
+      <CustomSectionBuilder />
     </div>
   );
 }

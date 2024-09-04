@@ -53,5 +53,5 @@ export interface ExperienceSection extends Section {
 
 export interface CustomSection extends Section {
   title: string;
-  subsection: CustomSection | string | null;
+  content: string[];
 }

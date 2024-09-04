@@ -30,7 +30,11 @@ export enum ResumeActionKind {
   SetContact = "SETCONTACT",
   AddExperience = "ADDEXPEREINCE",
   AddEducation = "ADDEDUCATION",
+  AddCustom = "ADDCUSTOM",
   Toggle = "TOGGLE",
+  SetExperience = "SETEXPERIENCE",
+  SetEducation = "SETEDUCATION",
+  SetCustom = "SETCUSTOM",
 }
 
 export interface ResumeAction {

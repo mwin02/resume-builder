@@ -20,7 +20,7 @@ const testResume: Resume = {
   personalInfo: sampleInfo,
   contactDetails: sampleContact,
   sections: [],
-  lastSectionId: 0,
+  lastSectionId: 1,
 };
 
 const emptyResume: Resume = {
@@ -35,7 +35,7 @@ const emptyResume: Resume = {
     website: "",
   },
   sections: [],
-  lastSectionId: 0,
+  lastSectionId: 1,
 };
 
 export function Providers({ children }: any) {
