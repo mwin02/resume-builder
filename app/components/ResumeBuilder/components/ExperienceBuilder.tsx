@@ -1,8 +1,11 @@
 import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
-import { ExperienceSection, SectionType } from "@/app/lib/types/resume";
-import { getResumeSection } from "@/app/lib/util/resume";
+import {
+  ExperienceSection,
+  SectionType,
+  ResumeActionKind,
+} from "@/app/lib/types";
+import { getResumeSection } from "@/app/lib/util";
 import { ExperienceBlock } from "./Block";
-import { ResumeActionKind } from "@/app/lib/types/util";
 import ExperienceInput from "./ExperienceInput";
 // TODO:: create a section builder for all sections
 

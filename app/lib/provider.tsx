@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useReducer } from "react";
-import { Resume } from "./types/resume";
+import { Resume, ResumeActionKind } from "@/app/lib/types";
 import { reducer } from "./reducer";
-
 import { ResumeContext, ResumeDispatchContext } from "./context";
-import { ResumeActionKind } from "./types/util";
 
 const sampleInfo = {
   name: "Myo Zaw Win",

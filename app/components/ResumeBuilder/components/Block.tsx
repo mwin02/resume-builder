@@ -3,7 +3,7 @@ import {
   EducationSection,
   ExperienceSection,
   Section,
-} from "@/app/lib/types/resume";
+} from "@/app/lib/types";
 
 // TODO:: implement draggable blocks that will update order based on drag
 

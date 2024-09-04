@@ -1,5 +1,4 @@
-import { Resume } from "@/app/lib/types/resume";
-import { ResumeAction, ResumeActionKind } from "./types/util";
+import { ResumeAction, ResumeActionKind, Resume } from "@/app/lib/types";
 
 export const reducer = (
   resume: Resume | undefined,

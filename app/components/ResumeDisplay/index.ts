@@ -1,0 +1,1 @@
+export { ResumeDisplay } from "./ResumeDisplay";

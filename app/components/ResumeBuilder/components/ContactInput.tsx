@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { SingleLineInput } from "./Input";
-import { ContactDetails } from "@/app/lib/types/resume";
+import { ContactDetails, ResumeActionKind } from "@/app/lib/types";
 import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
-import { ResumeActionKind } from "@/app/lib/types/util";
 
 export default function ContactInput() {
   const { resume } = useResumeContext();

@@ -1,6 +1,6 @@
 import { MutableRefObject, useRef, useState } from "react";
 import { MultiLineInput, SingleLineInput } from "./Input";
-import { ExperienceSection, SectionType } from "@/app/lib/types/resume";
+import { ExperienceSection, SectionType } from "@/app/lib/types";
 import { useResumeContext } from "@/app/lib/context";
 export default function ExperienceInput({
   addExperience,

@@ -1,4 +1,4 @@
-import { InputProp } from "@/app/lib/types/util";
+import { InputProp } from "@/app/lib/types";
 
 export const MultiLineInput = ({ label, value, setValue }: InputProp) => {
   return (

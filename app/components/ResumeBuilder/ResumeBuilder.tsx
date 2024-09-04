@@ -1,19 +1,16 @@
-import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
+import { useRef } from "react";
 
+import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
 import {
   ContactDetails,
   EmptyContactDetails,
   ExperienceSection,
   PersonalDetails,
   SectionType,
-} from "@/app/lib/types/resume";
-import { ResumeActionKind } from "@/app/lib/types/util";
+  ResumeActionKind,
+} from "@/app/lib/types";
 
-import ContactInput from "./ContactInput";
-import InfoInput from "./InfoInput";
-import ExperienceBuilder from "./ExperienceBuilder";
-import ExperienceInput from "./ExperienceInput";
-import { useRef } from "react";
+import { ContactInput, InfoInput, ExperienceBuilder } from "./components";
 
 const sampleInfo: PersonalDetails = {
   name: "Myo Zaw Win",
@@ -37,26 +34,13 @@ const sampleExperience: ExperienceSection = {
   type: SectionType.Experience,
 };
 
-export default function ResumeBuilder() {
-  const { resume } = useResumeContext();
-  const { dispatch } = useResumeDispatchContext();
-  const setInfo = (info: PersonalDetails) => {
-    dispatch({ type: ResumeActionKind.SetInfo, payload: info });
-  };
-  const setContact = (info: ContactDetails) => {
-    dispatch({ type: ResumeActionKind.SetContact, payload: info });
-  };
-  const addExperience = (info: ExperienceSection) => {
-    dispatch({ type: ResumeActionKind.AddExperience, payload: info });
-  };
-
+export function ResumeBuilder() {
   return (
     <div>
       <h3>Builder</h3>
-      <InfoInput setInfo={setInfo} />
-      <ContactInput setContact={setContact} />
+      <InfoInput />
+      <ContactInput />
       <ExperienceBuilder />
-      <ExperienceInput addExperience={addExperience} />
     </div>
   );
 }

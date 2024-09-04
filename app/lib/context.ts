@@ -1,6 +1,9 @@
 import { createContext } from "react";
 import { useContext } from "react";
-import { ResumeContextValue, ResumeDispatchContextValue } from "./types/util";
+import {
+  ResumeContextValue,
+  ResumeDispatchContextValue,
+} from "@/app/lib/types";
 
 export const ResumeContext = createContext<ResumeContextValue | undefined>(
   undefined

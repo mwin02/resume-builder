@@ -1,7 +1,7 @@
 "use client";
 
-import ResumeDisplay from "./components/viewer/ResumeDisplay";
-import ResumeBuilder from "./components/builder/ResumeBuilder";
+import { ResumeBuilder } from "@/app/components";
+import { ResumeDisplay } from "@/app/components";
 
 export default function Home() {
   return (

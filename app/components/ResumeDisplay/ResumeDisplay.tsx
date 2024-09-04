@@ -1,6 +1,5 @@
-import { downloadPDF } from "@/app/lib/util/pdf";
-import { convertResumeToJSX } from "@/app/lib/util/resume";
-import { HTMLToPDFObject } from "@/app/lib/types/util";
+import { convertResumeToJSX, downloadPDF } from "@/app/lib/util";
+import { HTMLToPDFObject } from "@/app/lib/types";
 import ReactDOMServer from "react-dom/server";
 import { useResumeContext } from "@/app/lib/context";
 import { useEffect, useState } from "react";
@@ -11,7 +10,7 @@ const EmptyPDFInfo: HTMLToPDFObject = {
   htmlContent: "",
   cssContent: undefined,
 };
-export default function ResumeDisplay() {
+export function ResumeDisplay() {
   const { resume } = useResumeContext();
 
   // const [resumeHTML, setResumeHTML] = useState(EmptyHTML);

@@ -7,7 +7,7 @@ import {
   Resume,
   SectionType,
   Section,
-} from "@/app/lib/types/resume";
+} from "@/app/lib/types";
 import { Dispatch, SetStateAction } from "react";
 
 export const getResumeSection = (
