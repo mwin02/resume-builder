@@ -10,10 +10,10 @@ export interface BulletPointItem extends SortableBaseItem {
   content: string;
 }
 
-export interface InputProp {
+export interface InputProp<T> {
   label: string;
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  value: T;
+  setValue: (newValue: T) => void;
 }
 
 export interface ResumeContextValue {

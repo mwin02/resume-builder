@@ -26,6 +26,7 @@ export enum SectionType {
 }
 
 export interface Section extends SortableBaseItem {
+  sectionId: number;
   display: boolean;
   type: SectionType;
 }
@@ -33,17 +34,18 @@ export interface Section extends SortableBaseItem {
 export interface EducationSection extends Section {
   schoolTitle: string;
   completed: boolean;
-  startDate: string | null;
+  startDate: Date | null;
   endDate: Date | null;
-  major: Date;
+  major: string;
   degree: string;
-  gpa: number;
+  gpa: string;
+  achievements: string[];
 }
 
 export interface ExperienceSection extends Section {
   jobTitle: string;
   company: string;
-  jobDuty: string;
+  jobDuty: string[];
   startDate: Date | null;
   endDate: Date | null;
   location: string;

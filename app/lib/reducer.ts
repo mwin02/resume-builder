@@ -35,7 +35,7 @@ export const reducer = (
 
 function resumeToggle(payload: any, resume: Resume) {
   const sectionIndex = resume.sections.findIndex(
-    (section) => section.id === payload
+    (section) => section.sectionId === payload
   );
   if (sectionIndex === -1) {
     return resume;
@@ -48,7 +48,11 @@ function resumeToggle(payload: any, resume: Resume) {
 }
 
 function resumeAddEducation(payload: any, resume: Resume) {
-  const newEducation = { ...payload, id: resume.lastSectionId };
+  const newEducation = {
+    ...payload,
+    sectionId: resume.lastSectionId,
+    id: resume.lastSectionId,
+  };
   const updatedSections = [...resume.sections, newEducation];
   // TODO:: Generate unique id for new education
   return {
@@ -59,7 +63,11 @@ function resumeAddEducation(payload: any, resume: Resume) {
 }
 
 function resumeAddExperience(payload: any, resume: Resume) {
-  const newExperience = { ...payload, id: resume.lastSectionId };
+  const newExperience = {
+    ...payload,
+    sectionId: resume.lastSectionId,
+    id: resume.lastSectionId,
+  };
   const updatedSections = [...resume.sections, newExperience];
   // TODO:: Generate unique id for new education
   return {

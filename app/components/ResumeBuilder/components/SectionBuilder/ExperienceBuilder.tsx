@@ -6,7 +6,7 @@ import {
 } from "@/app/lib/types";
 import { getResumeSection } from "@/app/lib/util";
 import { ExperienceBlock } from "./Block";
-import ExperienceInput from "./ExperienceInput";
+import { ExperienceInput } from "../Input";
 // TODO:: create a section builder for all sections
 
 export default function ExperienceBuilder() {

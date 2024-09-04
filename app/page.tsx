@@ -18,8 +18,8 @@ export default function Home() {
   return (
     <main>
       <ResumeDisplay />
-      {/* <ResumeBuilder /> */}
-      <div style={{ maxWidth: 400, margin: "30px auto" }}>
+      <ResumeBuilder />
+      {/* <div style={{ maxWidth: 400, margin: "30px auto" }}>
         <SortableList
           items={items}
           onChange={setItems}
@@ -28,7 +28,7 @@ export default function Home() {
           }}
           itemClassName="SortableItem"
         />
-      </div>
+      </div> */}
     </main>
   );
 }

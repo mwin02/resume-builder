@@ -35,7 +35,7 @@ export function ExperienceBlock({
       <p>
         {experience.jobTitle} at {experience.company}
       </p>
-      <button onClick={() => toggle(experience.id)}>Toggle</button>
+      <button onClick={() => toggle(experience.sectionId)}>Toggle</button>
     </div>
   );
 }

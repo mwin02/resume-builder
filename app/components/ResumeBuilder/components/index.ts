@@ -1,5 +1,2 @@
-import ContactInput from "./ContactInput";
-import InfoInput from "./InfoInput";
-import ExperienceBuilder from "./ExperienceBuilder";
-
-export { ContactInput, InfoInput, ExperienceBuilder };
+export { ContactInput, InfoInput } from "./Input";
+export { ExperienceBuilder, EducationBuilder } from "./SectionBuilder";
