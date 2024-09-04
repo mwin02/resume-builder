@@ -1,3 +1,5 @@
+import { SortableBaseItem } from "./util";
+
 export interface Resume {
   personalInfo: PersonalDetails;
   contactDetails: ContactDetails;
@@ -11,23 +13,11 @@ export interface PersonalDetails {
   bio: string;
 }
 
-export const EmptyPersonalDetails: PersonalDetails = {
-  name: "",
-  location: "",
-  bio: "",
-};
-
 export interface ContactDetails {
   email: string;
   phone: string;
   website: string;
 }
-
-export const EmptyContactDetails: ContactDetails = {
-  email: "",
-  phone: "",
-  website: "",
-};
 
 export enum SectionType {
   Education = "EDUCATION",
@@ -35,8 +25,7 @@ export enum SectionType {
   Custom = "CUSTOM",
 }
 
-export interface Section {
-  id: number;
+export interface Section extends SortableBaseItem {
   display: boolean;
   type: SectionType;
 }

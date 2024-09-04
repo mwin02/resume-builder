@@ -1,5 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
 import { ContactDetails, Resume } from "./resume";
+import { UniqueIdentifier } from "@dnd-kit/core";
+
+export interface SortableBaseItem {
+  id: UniqueIdentifier;
+}
+
+export interface BulletPointItem extends SortableBaseItem {
+  content: string;
+}
 
 export interface InputProp {
   label: string;
