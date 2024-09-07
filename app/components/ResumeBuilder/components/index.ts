@@ -1,4 +1,4 @@
-export { ContactInput, InfoInput } from "./Input";
+export { InfoInput } from "./Input";
 export {
   ExperienceBuilder,
   EducationBuilder,
