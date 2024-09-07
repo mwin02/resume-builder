@@ -67,7 +67,7 @@ export default function CustomSectionInput({
         ref={ref as MutableRefObject<HTMLDialogElement>}
         onCancel={closeModal}
       >
-        <div className="min-w-[600px] p-8 rounded-md border-1 max-h-[700px]">
+        <div className="min-w-[600px] p-8 max-w-[800px] rounded-md border-1 max-h-[700px]">
           <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <h3 className="text-base font-semibold leading-7 text-gray-900">
               {title === "" ? "Custom Section" : title}

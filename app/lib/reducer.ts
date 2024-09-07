@@ -27,14 +27,14 @@ export const reducer = (
 ): Resume | undefined => {
   const { type, payload } = action;
   if (!resume) {
-    if (type === ResumeActionKind.InitialSet) {
-      return { ...payload };
-    }
     throw new Error(
       "Unexpected Dispatch Function Call : Dispatch Function was called before resume's initial state is set"
     );
   }
   switch (type) {
+    case ResumeActionKind.InitialSet: {
+      return intialiseResume(payload);
+    }
     case ResumeActionKind.SetInfo: {
       return resumeSetInfo(resume, payload);
     }
@@ -72,6 +72,17 @@ export const reducer = (
   }
   return resume;
 };
+
+function intialiseResume(payload: any) {
+  const updatedSections = payload.sections.map((section: any) => {
+    return {
+      ...section,
+      startDate: section.startDate ? new Date(section.startDate) : null,
+      endDate: section.endDate ? new Date(section.endDate) : null,
+    };
+  });
+  return { ...payload, sections: updatedSections, empty: false };
+}
 
 function setSection(payload: any, resume: Resume, type: SectionType) {
   const oldSections = [...resume.sections];

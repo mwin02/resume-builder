@@ -5,6 +5,7 @@ export interface Resume {
   contactDetails: ContactDetails;
   sections: Section[];
   lastSectionId: number;
+  empty?: boolean;
 }
 
 export interface PersonalDetails {

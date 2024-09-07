@@ -36,20 +36,32 @@ const emptyResume: Resume = {
   },
   sections: [],
   lastSectionId: 1,
+  empty: true,
 };
 
 export function Providers({ children }: any) {
   // TODO:: Get an initial resume that is saved somewhere and save to that resume on every dispatch
-  const [resume, dispatch] = useReducer(reducer, undefined);
+  const [resume, dispatch] = useReducer(reducer, emptyResume);
   useEffect(() => {
-    if (!resume) {
+    console.log(resume);
+    if (resume?.empty) {
       // if initial load and resume is not initialized, retrieve it
-      const initalResume = testResume;
-      dispatch({ type: ResumeActionKind.InitialSet, payload: initalResume });
+      const storedResume = localStorage.getItem("resume");
+      // const storedResume = undefined;
+      const initialResume = storedResume
+        ? JSON.parse(storedResume)
+        : { ...emptyResume };
+      console.log(initialResume);
+      dispatch({
+        type: ResumeActionKind.InitialSet,
+        payload: initialResume,
+      });
       console.log("Resume has been initialized");
     } else {
       // if resume is changed, then save the new resume
+      localStorage.setItem("resume", JSON.stringify(resume));
       console.log("Resume has been changed. Save New Resume");
+      console.log(resume);
     }
   }, [resume]);
   return (
