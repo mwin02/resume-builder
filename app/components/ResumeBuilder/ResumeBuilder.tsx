@@ -1,5 +1,4 @@
 import {
-  ContactInput,
   InfoInput,
   ExperienceBuilder,
   EducationBuilder,
