@@ -104,7 +104,7 @@ export const convertResumeToJSX = (resume: Resume) => {
   const customContent = renderCustom(customSections);
 
   return (
-    <div className="resume">
+    <div className="bg-sky-50 ">
       <h3>{personalInfo?.name || "Placeholder"}</h3>
       <p>
         <span>{`${personalInfo?.location}   |`}</span>

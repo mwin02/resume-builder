@@ -3,6 +3,7 @@ import { SectionType, ResumeActionKind, CustomSection } from "@/app/lib/types";
 import { getResumeSection } from "@/app/lib/util";
 import { SortableList } from "@/app/components";
 import { CustomSectionInput } from "../Input";
+import { Block } from "./Block";
 
 export default function CustomSectionBuilder() {
   const { resume } = useResumeContext();
@@ -27,9 +28,13 @@ export default function CustomSectionBuilder() {
       <SortableList
         items={customSections}
         onChange={setCustomSection}
-        itemContent={(section) => {
-          return <>{`${section.title}`}</>;
-        }}
+        itemContent={(section) => (
+          <Block
+            displayText={`${section.title}`}
+            id={section.sectionId}
+            displayOn={section.display}
+          />
+        )}
         itemClassName="SortableItem"
       />
     </div>

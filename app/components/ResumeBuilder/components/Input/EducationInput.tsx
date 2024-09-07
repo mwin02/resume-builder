@@ -1,12 +1,10 @@
 import { MutableRefObject, useRef, useState } from "react";
-import { DateInput, MultiLineInput, SingleLineInput } from "./Input";
+import { SingleLineInput } from "./Input";
 import {
   BulletPointItem,
   EducationSection,
-  ExperienceSection,
   SectionType,
 } from "@/app/lib/types";
-import { useResumeContext } from "@/app/lib/context";
 import { SortableList } from "@/app/components";
 import { buildInput, InputBuilder, InputForm, InputType } from "./InputForm";
 

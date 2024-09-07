@@ -1,41 +1,25 @@
-import {
-  CustomSection,
-  EducationSection,
-  ExperienceSection,
-  Section,
-} from "@/app/lib/types";
+import { useResumeDispatchContext } from "@/app/lib/context";
+import { ResumeActionKind } from "@/app/lib/types";
 
 // TODO:: implement draggable blocks that will update order based on drag
 
-export function Block({ section }: { section: Section }) {
-  return <>{section.id}</>;
-}
-
-export function CustomBlock({
-  customSection,
+export function Block({
+  displayText,
+  id,
+  displayOn,
 }: {
-  customSection: CustomSection;
+  displayText: string;
+  id: number;
+  displayOn: boolean;
 }) {
-  return <>{customSection.title}</>;
-}
-
-export function EducationBlock({ education }: { education: EducationSection }) {
-  return <>{education.schoolTitle}</>;
-}
-
-export function ExperienceBlock({
-  experience,
-  toggle,
-}: {
-  experience: ExperienceSection;
-  toggle: (id: number) => void;
-}) {
+  const { dispatch } = useResumeDispatchContext();
+  const toggle = (id: number) => {
+    dispatch({ type: ResumeActionKind.Toggle, payload: id });
+  };
   return (
-    <div>
-      <p>
-        {experience.jobTitle} at {experience.company}
-      </p>
-      <button onClick={() => toggle(experience.sectionId)}>Toggle</button>
-    </div>
+    <>
+      {displayText}
+      <button onClick={() => toggle(id)}>{displayOn ? "Hide" : "Show"}</button>
+    </>
   );
 }

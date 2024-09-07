@@ -5,7 +5,7 @@ import {
   ResumeActionKind,
 } from "@/app/lib/types";
 import { getResumeSection } from "@/app/lib/util";
-import { ExperienceBlock } from "./Block";
+import { Block } from "./Block";
 import { ExperienceInput } from "../Input";
 import { SortableList } from "@/app/components/SortableList";
 // TODO:: create a section builder for all sections
@@ -36,7 +36,13 @@ export default function ExperienceBuilder() {
         items={experiences}
         onChange={setExperience}
         itemContent={(experience) => {
-          return <>{`${experience.jobTitle} at ${experience.company}`}</>;
+          return (
+            <Block
+              displayText={`${experience.jobTitle} at ${experience.company}`}
+              id={experience.sectionId}
+              displayOn={experience.display}
+            />
+          );
         }}
         itemClassName="SortableItem"
       />

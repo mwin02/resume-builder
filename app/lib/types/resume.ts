@@ -51,6 +51,7 @@ export interface ExperienceSection extends Section {
   location: string;
 }
 
+// TODO:: extend customSection to be a title + Mini Sections
 export interface CustomSection extends Section {
   title: string;
   content: string[];

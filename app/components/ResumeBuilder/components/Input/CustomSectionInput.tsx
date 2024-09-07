@@ -1,15 +1,8 @@
 import { MutableRefObject, useRef, useState } from "react";
-import { DateInput, MultiLineInput, SingleLineInput } from "./Input";
-import {
-  BulletPointItem,
-  CustomSection,
-  EducationSection,
-  ExperienceSection,
-  SectionType,
-} from "@/app/lib/types";
-import { useResumeContext } from "@/app/lib/context";
+import { SingleLineInput } from "./Input";
+import { BulletPointItem, CustomSection, SectionType } from "@/app/lib/types";
+
 import { SortableList } from "@/app/components";
-import { buildInput, InputBuilder, InputForm, InputType } from "./InputForm";
 
 export default function CustomSectionInput({
   addCustomSection,

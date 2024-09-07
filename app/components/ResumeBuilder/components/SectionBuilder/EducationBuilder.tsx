@@ -1,13 +1,11 @@
 import { useResumeContext, useResumeDispatchContext } from "@/app/lib/context";
 import {
-  ExperienceSection,
   SectionType,
   ResumeActionKind,
   EducationSection,
 } from "@/app/lib/types";
 import { getResumeSection } from "@/app/lib/util";
-import { ExperienceBlock } from "./Block";
-import { ExperienceInput } from "../Input";
+import { Block } from "./Block";
 import EducationInput from "../Input/EducationInput";
 import { SortableList } from "@/app/components";
 
@@ -35,7 +33,13 @@ export default function EducationBuilder() {
         items={educations}
         onChange={setEducation}
         itemContent={(education) => {
-          return <>{`${education.major} at ${education.schoolTitle}`}</>;
+          return (
+            <Block
+              displayText={`${education.major} at ${education.schoolTitle}`}
+              id={education.sectionId}
+              displayOn={education.display}
+            />
+          );
         }}
         itemClassName="SortableItem"
       />

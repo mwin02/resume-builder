@@ -1,7 +1,7 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -31,7 +31,7 @@ body {
     text-wrap: balance;
   }
 } */
-
+/* 
 main {
   display: flex;
   gap: 50px;
@@ -57,4 +57,4 @@ h2 {
 
 dialog {
   max-width: 1000px;
-}
+} */

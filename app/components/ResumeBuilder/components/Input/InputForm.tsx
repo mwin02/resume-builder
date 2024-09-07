@@ -1,4 +1,3 @@
-import { InputProp } from "@/app/lib/types";
 import {
   BooleanInput,
   DateInput,
@@ -86,5 +85,5 @@ export function buildInput<T>(
 
 export const InputForm = ({ inputs }: InputFormProp) => {
   const inputElements = inputs.map((input, index) => renderInput(input, index));
-  return <form>{inputElements}</form>;
+  return <form className="mt-6 border-t border-gray-100">{inputElements}</form>;
 };

@@ -41,7 +41,7 @@ export function ResumeDisplay() {
   };
 
   return (
-    <div>
+    <div className="basis-1/2 max-h-screen overflow-scroll p-7">
       <button
         onClick={() => {
           downloadPDF(pdfInfo);
