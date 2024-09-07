@@ -41,15 +41,16 @@ export function ResumeDisplay() {
   };
 
   return (
-    <div className="basis-1/2 max-h-screen overflow-scroll p-7">
+    <div className="basis-1/2 h-screen overflow-scroll p-7 flex flex-col justify-center items-center">
       <button
+        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-3"
         onClick={() => {
           downloadPDF(pdfInfo);
         }}
       >
         Download Resume
       </button>
-      <div className="resume-container">{resumeHTML}</div>
+      {resumeHTML}
     </div>
   );
 }

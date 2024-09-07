@@ -14,6 +14,10 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    fontSize: {
+      xxs: ["11px", "12px"],
+      xs: ["12px", "13px"],
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

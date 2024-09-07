@@ -122,20 +122,24 @@ export const convertResumeToJSX = (resume: Resume) => {
   const customContent = renderCustom(customSections);
 
   return (
-    <div className="bg-sky-50 ">
-      <h3>{personalInfo?.name || "Placeholder"}</h3>
-      <p>
-        <span>{`${personalInfo?.location}   |`}</span>
-        <span>{`${contactDetails?.email}   |`}</span>
-        <span>{`${contactDetails?.phone}   |`}</span>
-        <span>{`${contactDetails?.website}   |`}</span>
-      </p>
-      <p>{personalInfo?.bio}</p>
-      <h3>Experience</h3>
-      {experiencesContent}
-      <h3>Education</h3>
-      {educationContent}
-      {customContent}
+    <div className="w-[584px] h-[700px] overflow-scroll border-2 border-black p-10 font-serif">
+      <h3 className="text-lg font-semibold leading-7 text-gray-900">
+        {personalInfo?.name || "Placeholder"}
+      </h3>
+      <div className="text-xs">
+        <p className="mb-1.5">
+          <span>{`${personalInfo?.location} | `}</span>
+          <span>{`${contactDetails?.email} | `}</span>
+          <span>{`${contactDetails?.phone} | `}</span>
+          <span>{`${contactDetails?.website} | `}</span>
+        </p>
+        <p className="text-xxs mb-1.5">{personalInfo?.bio}</p>
+        <h3>Experience</h3>
+        {experiencesContent}
+        <h3>Education</h3>
+        {educationContent}
+        {customContent}
+      </div>
     </div>
   );
 };
