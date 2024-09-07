@@ -72,7 +72,7 @@ const renderEducation = (educationSections: EducationSection[]) => {
     let content = <></>;
     if (education.display) {
       content = (
-        <div className="text-xs">
+        <div className="text-xs mt-2">
           <p>
             {education.degree} in {education.major} at {education.schoolTitle}
           </p>
