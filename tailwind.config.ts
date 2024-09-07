@@ -17,6 +17,9 @@ const config: Config = {
     fontSize: {
       xxs: ["11px", "12px"],
       xs: ["12px", "13px"],
+      sm: ["0.875rem", "1.25rem"],
+      lg: ["1.125rem", "1.75rem"],
+      xl: ["1.25rem", "1.75rem"],
     },
   },
   plugins: [require("@tailwindcss/forms")],
