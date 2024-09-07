@@ -21,8 +21,8 @@ export function Block({
   };
   const edit = (id: number) => {};
   return (
-    <div className="sm:grid sm:grid-cols-4 w-full">
-      <div className="flex content-center">
+    <div className="sm:grid sm:grid-cols-4 w-full sm:gap-4 sm:px-0">
+      <div className="flex content-center col-start-1 col-end-4">
         <p>{displayText}</p>
       </div>
       <div className="col-start-4 flex flex-row justify-evenly">
