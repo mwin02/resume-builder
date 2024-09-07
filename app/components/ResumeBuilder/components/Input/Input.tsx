@@ -1,12 +1,13 @@
-import { InputProp } from "@/app/lib/types";
+import { InputProp, MultiLineInputProp } from "@/app/lib/types";
 
 export const MultiLineInput = ({
   label,
   value,
   setValue,
-}: InputProp<string>) => {
+  lineHeight,
+}: MultiLineInputProp<string>) => {
   return (
-    <div className=" py-6">
+    <div className=" py-3">
       <label
         htmlFor={label}
         className="block text-sm font-medium leading-6 text-gray-900"
@@ -16,7 +17,9 @@ export const MultiLineInput = ({
       <div className="mt-2">
         <textarea
           name={label}
-          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 h-36"
+          className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 h-${
+            6 * lineHeight
+          }`}
           onChange={(e) => {
             setValue(e.target.value);
           }}
@@ -33,7 +36,7 @@ export const SingleLineInput = ({
   setValue,
 }: InputProp<string>) => {
   return (
-    <div className="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+    <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
       <label htmlFor="" className="text-sm font-medium leading-6 text-gray-900">
         {label}
       </label>
@@ -55,15 +58,23 @@ export const DateInput = ({
   setValue,
 }: InputProp<Date | null>) => {
   return (
-    <>
-      <label htmlFor="">{label}</label>
-      {/* <input
+    <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <label
+        htmlFor={"date"}
+        className="text-sm font-medium leading-6 text-gray-900"
+      >
+        {label}
+      </label>
+      <input
+        name="date"
+        type="date"
+        className="rounded-md mx-4 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 col-start-2 col-end-4"
         onChange={(e) => {
-          setValue(e.target.value);
+          const newDate = new Date(e.target.value);
+          setValue(newDate);
         }}
-        value={value}
-      ></input> */}
-    </>
+      ></input>
+    </div>
   );
 };
 
@@ -73,14 +84,17 @@ export const BooleanInput = ({
   setValue,
 }: InputProp<boolean>) => {
   return (
-    <>
-      <label htmlFor="">{label}</label>
-      {/* <input
+    <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <label htmlFor="" className="text-sm font-medium leading-6 text-gray-900">
+        {label}
+      </label>
+      <input
+        className="rounded-md mx-4 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 col-start-2 col-end-4"
+        type="checkbox"
         onChange={(e) => {
-          setValue(e.target.value);
+          setValue(e.target.checked);
         }}
-        value={value}
-      ></input> */}
-    </>
+      ></input>
+    </div>
   );
 };

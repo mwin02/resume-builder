@@ -26,23 +26,29 @@ export default function EducationBuilder() {
     SectionType.Education
   ) as EducationSection[];
   return (
-    <div>
-      <h3>Education</h3>
+    <div className="mt-5">
+      <div className="px-4 sm:px-0">
+        <h3 className="text-base font-semibold leading-7 text-gray-900">
+          Education
+        </h3>
+      </div>
       <EducationInput addEducation={addEducation} />
-      <SortableList
-        items={educations}
-        onChange={setEducation}
-        itemContent={(education) => {
-          return (
-            <Block
-              displayText={`${education.major} at ${education.schoolTitle}`}
-              id={education.sectionId}
-              displayOn={education.display}
-            />
-          );
-        }}
-        itemClassName="SortableItem"
-      />
+      <div className="mt-4">
+        <SortableList
+          items={educations}
+          onChange={setEducation}
+          itemContent={(education) => {
+            return (
+              <Block
+                displayText={`${education.major} at ${education.schoolTitle}`}
+                id={education.sectionId}
+                displayOn={education.display}
+              />
+            );
+          }}
+          itemClassName="SortableItem"
+        />
+      </div>
     </div>
   );
 }

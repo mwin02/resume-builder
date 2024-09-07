@@ -7,7 +7,7 @@ import {
 import { Dispatch, SetStateAction } from "react";
 
 interface InputFormProp {
-  inputs: InputBuilder<any>[];
+  inputs: (InputBuilder<any> | undefined)[];
 }
 
 export enum InputType {
@@ -45,6 +45,7 @@ function renderStringInput(info: InputBuilder<string>, key: number) {
           label={label}
           setValue={setValue}
           key={key}
+          lineHeight={4}
         />
       );
     }
@@ -65,7 +66,10 @@ function renderBoolInput(info: InputBuilder<boolean>, key: number) {
   );
 }
 
-function renderInput<T>(input: InputBuilder<T>, key: number) {
+function renderInput<T>(input: InputBuilder<T> | undefined, key: number) {
+  if (!input) {
+    return;
+  }
   if (input.type === InputType.Single || input.type === InputType.Multi)
     return renderStringInput(input as any as InputBuilder<string>, key);
   if (input.type === InputType.Date)

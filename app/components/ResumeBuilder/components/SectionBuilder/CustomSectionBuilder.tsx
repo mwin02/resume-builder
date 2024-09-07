@@ -22,21 +22,27 @@ export default function CustomSectionBuilder() {
     SectionType.Custom
   ) as CustomSection[];
   return (
-    <div>
-      <h3>Custom Sections</h3>
+    <div className="mt-5">
+      <div className="px-4 sm:px-0">
+        <h3 className="text-base font-semibold leading-7 text-gray-900">
+          Custom Sections
+        </h3>
+      </div>
       <CustomSectionInput addCustomSection={addCustomSection} />
-      <SortableList
-        items={customSections}
-        onChange={setCustomSection}
-        itemContent={(section) => (
-          <Block
-            displayText={`${section.title}`}
-            id={section.sectionId}
-            displayOn={section.display}
-          />
-        )}
-        itemClassName="SortableItem"
-      />
+      <div className="mt-4">
+        <SortableList
+          items={customSections}
+          onChange={setCustomSection}
+          itemContent={(section) => (
+            <Block
+              displayText={`${section.title}`}
+              id={section.sectionId}
+              displayOn={section.display}
+            />
+          )}
+          itemClassName="SortableItem"
+        />
+      </div>
     </div>
   );
 }

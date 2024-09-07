@@ -4,7 +4,7 @@ import {
   SectionType,
   ResumeActionKind,
 } from "@/app/lib/types";
-import { getResumeSection } from "@/app/lib/util";
+import { formateDateString, getResumeSection } from "@/app/lib/util";
 import { Block } from "./Block";
 import { ExperienceInput } from "../Input";
 import { SortableList } from "@/app/components/SortableList";
@@ -29,23 +29,43 @@ export default function ExperienceBuilder() {
   ) as ExperienceSection[];
 
   return (
-    <div>
-      <h3>Experiences</h3>
+    <div className="mt-5">
+      <div className="px-4 sm:px-0">
+        <h3 className="text-base font-semibold leading-7 text-gray-900">
+          Experience
+        </h3>
+      </div>
       <ExperienceInput addExperience={addExperience} />
-      <SortableList
-        items={experiences}
-        onChange={setExperience}
-        itemContent={(experience) => {
-          return (
-            <Block
-              displayText={`${experience.jobTitle} at ${experience.company}`}
-              id={experience.sectionId}
-              displayOn={experience.display}
-            />
-          );
-        }}
-        itemClassName="SortableItem"
-      />
+      <div className="mt-4">
+        <SortableList
+          items={experiences}
+          onChange={setExperience}
+          itemContent={(experience) => {
+            const displayText =
+              `${experience.jobTitle} ${
+                experience.company ? `at ${experience.company}` : "No Job Title"
+              } | ` +
+              `Date: ${
+                experience.startDate
+                  ? `${formateDateString(experience.startDate)} - `
+                  : ""
+              }` +
+              `${
+                experience.endDate
+                  ? `${formateDateString(experience.endDate)}    `
+                  : ""
+              }`;
+            return (
+              <Block
+                displayText={displayText}
+                id={experience.sectionId}
+                displayOn={experience.display}
+              />
+            );
+          }}
+          itemClassName="SortableItem"
+        />
+      </div>
     </div>
   );
 }

@@ -10,6 +10,10 @@ export interface BulletPointItem extends SortableBaseItem {
   content: string;
 }
 
+export interface MultiLineInputProp<T> extends InputProp<T> {
+  lineHeight: number;
+}
+
 export interface InputProp<T> {
   label: string;
   value: T;
@@ -35,6 +39,8 @@ export enum ResumeActionKind {
   SetExperience = "SETEXPERIENCE",
   SetEducation = "SETEDUCATION",
   SetCustom = "SETCUSTOM",
+  ClearInfo = "CLEARINFO",
+  DelSection = "DELSECTION",
 }
 
 export interface ResumeAction {

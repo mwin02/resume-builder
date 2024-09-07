@@ -10,6 +10,24 @@ import {
 } from "@/app/lib/types";
 import { Dispatch, SetStateAction } from "react";
 
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+export const formateDateString = (date: Date) => {
+  return `${months[date.getMonth()]}/${date.getFullYear()}`;
+};
+
 export const getResumeSection = (
   resume: Resume,
   type: SectionType

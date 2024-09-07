@@ -6,6 +6,21 @@ import {
 } from "@/app/lib/types";
 import { getResumeSection } from "./util";
 
+const emptyResume: Resume = {
+  personalInfo: {
+    name: "",
+    location: "",
+    bio: "",
+  },
+  contactDetails: {
+    email: "",
+    phone: "",
+    website: "",
+  },
+  sections: [],
+  lastSectionId: 1,
+};
+
 export const reducer = (
   resume: Resume | undefined,
   action: ResumeAction
@@ -46,6 +61,13 @@ export const reducer = (
     }
     case ResumeActionKind.SetCustom: {
       return setSection(payload, resume, SectionType.Custom);
+    }
+    case ResumeActionKind.ClearInfo: {
+      return {
+        ...resume,
+        contactDetails: emptyResume.contactDetails,
+        personalInfo: emptyResume.personalInfo,
+      };
     }
   }
   return resume;
