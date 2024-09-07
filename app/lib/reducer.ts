@@ -69,9 +69,19 @@ export const reducer = (
         personalInfo: emptyResume.personalInfo,
       };
     }
+    case ResumeActionKind.DelSection: {
+      return deleteSection(resume, payload);
+    }
   }
   return resume;
 };
+
+function deleteSection(resume: Resume, id: any) {
+  const udpatedSections = [...resume.sections].filter(
+    (section: any) => section.id !== id
+  );
+  return { ...resume, sections: udpatedSections };
+}
 
 function intialiseResume(payload: any) {
   const updatedSections = payload.sections.map((section: any) => {
